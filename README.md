@@ -73,7 +73,7 @@ Contains pipeline-as-code configuration for Jenkins automation
 ## 🚀 Deployment Details  
 
 - **Hosted on:** Google Cloud Platform (GCP)  
-- **App URL:** 🌐 [http://34.93.214.230:5000](http://34.93.214.230:5000) Link is not available as the VM was destroyed after used 
+- **App URL:** 🌐 [http://34.93.214.230:5000](http://34.93.214.230:5000) Link is not accessible as the VM was destroyed after used 
 - **Database:** Persistent volume for MySQL data  
 - **Pipeline:** Automatically redeploys on every push to `main` branch  
 
