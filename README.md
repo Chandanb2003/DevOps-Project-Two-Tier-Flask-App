@@ -1,108 +1,114 @@
-🚀 DevOps Project: CI/CD Pipeline for a 2-Tier Flask Application on GCP
+# 🚀 DevOps Project: CI/CD Pipeline for a 2-Tier Flask Application on GCP  
 
-Author (Original Project): Prashant Gohel
+![Jenkins](https://img.shields.io/badge/CI%2FCD-Jenkins-blue?logo=jenkins)
+![Docker](https://img.shields.io/badge/Containerized-Docker-blue?logo=docker)
+![GCP](https://img.shields.io/badge/Deployed%20on-Google%20Cloud-yellow?logo=googlecloud)
+![Flask](https://img.shields.io/badge/Backend-Flask-black?logo=flask)
+![MySQL](https://img.shields.io/badge/Database-MySQL-orange?logo=mysql)
+![Status](https://img.shields.io/badge/Status-Deployed-success?style=flat-square)
 
-Deployed & Automated by: Chandan B
-Date: November 2025
+**Author (Original Project):** [Prashant Gohel](https://github.com/prashantgohel-dev)  
+**Deployed & Automated by:** **Chandan B**  
+**Date:** November 2025  
 
-📘 Project Overview
+---
 
-This project demonstrates the deployment and automation of a 2-tier web application (Flask + MySQL) using Docker, Jenkins, and GitHub on a Google Cloud Platform (GCP) Virtual Machine.
+## 📘 Project Overview  
 
-The CI/CD pipeline automatically builds, tests, and deploys the updated application whenever new code is pushed to the GitHub repository — showcasing a full DevOps workflow from source control to deployment.
+This project demonstrates the **deployment and automation** of a 2-tier web application (**Flask + MySQL**) using **Docker**, **Jenkins**, and **GitHub** on a **Google Cloud Platform (GCP)** Virtual Machine.  
 
-🏗️ Architecture
-+-----------------+      +----------------------+      +-----------------------------+
-|   Developer     |----->|     GitHub Repo      |----->|        Jenkins Server       |
-| (pushes code)   |      | (Source Code Mgmt)   |      |      (on GCP VM)            |
-+-----------------+      +----------------------+      |                             |
-                                                       | 1. Clones Repo              |
-                                                       | 2. Builds Docker Image      |
-                                                       | 3. Runs Docker Compose      |
-                                                       +--------------+--------------+
-                                                                      |
-                                                                      | Deploys
-                                                                      v
-                                                       +-----------------------------+
-                                                       |      Application Server     |
-                                                       |         (Same GCP VM)       |
-                                                       |                             |
-                                                       | +-------------------------+ |
-                                                       | | Docker Container: Flask | |
-                                                       | +-------------------------+ |
-                                                       |              |              |
-                                                       |              v              |
-                                                       | +-------------------------+ |
-                                                       | | Docker Container: MySQL | |
-                                                       | +-------------------------+ |
-                                                       +-----------------------------+
+The CI/CD pipeline automatically **builds, tests, and deploys** the updated application whenever new code is pushed to the GitHub repository — showcasing a full DevOps workflow from **source control to deployment**.  
 
-⚙️ Tech Stack
+---
 
-Flask (Python) – Web application
+## 🏗️ Architecture  
 
-MySQL – Database layer
++-----------------+ +----------------------+ +-----------------------------+
+| Developer |----->| GitHub Repo |----->| Jenkins Server |
+| (pushes code) | | (Source Code Mgmt) | | (on GCP VM) |
++-----------------+ +----------------------+ | |
+| 1. Clones Repo |
+| 2. Builds Docker Image |
+| 3. Runs Docker Compose |
++--------------+--------------+
+|
+| Deploys
+v
++-----------------------------+
+| Application Server |
+| (Same GCP VM) |
+| |
+| +-------------------------+ |
+| | Docker Container: Flask | |
+| +-------------------------+ |
+| | |
+| v |
+| +-------------------------+ |
+| | Docker Container: MySQL | |
+| +-------------------------+ |
++-----------------------------+
 
-Docker – Containerization
+---
 
-Docker Compose – Multi-container orchestration
+## ⚙️ Tech Stack  
 
-Jenkins – CI/CD automation
+- **Flask (Python)** – Web application  
+- **MySQL** – Database layer  
+- **Docker** – Containerization  
+- **Docker Compose** – Multi-container orchestration  
+- **Jenkins** – CI/CD automation  
+- **GitHub** – Source code management  
+- **GCP VM Instance** – Cloud infrastructure  
 
-GitHub – Source code management
+---
 
-GCP VM Instance – Cloud infrastructure
+## 🧱 Project Workflow  
 
-🧱 Project Workflow
+1. Developer pushes code to **GitHub**  
+2. **Jenkins** automatically triggers the build pipeline  
+3. Jenkins clones the repo, builds the Docker image, and deploys via **Docker Compose**  
+4. Application runs on **Flask (port 5000)** with a connected **MySQL** container  
+5. Every new push automatically triggers a rebuild and redeployment  
 
-Developer pushes code to GitHub
+---
 
-Jenkins automatically triggers the build pipeline
+## 🧩 Files Included  
 
-Jenkins clones the repo, builds the Docker image, and deploys via Docker Compose
+### 🐍 **Dockerfile**  
+Defines the Flask app container environment  
 
-Application runs on Flask (port 5000) with a connected MySQL container
+### ⚙️ **docker-compose.yml**  
+Orchestrates multi-container setup (Flask + MySQL)  
 
-Every new push automatically triggers a rebuild and redeployment
+### 🧾 **Jenkinsfile**  
+Contains pipeline-as-code configuration for Jenkins automation  
 
-🧩 Files Included
-🐍 Dockerfile
+---
 
-Defines the Flask app container environment
+## 🚀 Deployment Details  
 
-⚙️ docker-compose.yml
+- **Hosted on:** Google Cloud Platform (GCP)  
+- **App URL:** 🌐 [http://34.93.214.230:5000](http://34.93.214.230:5000)  
+- **Database:** Persistent volume for MySQL data  
+- **Pipeline:** Automatically redeploys on every push to `main` branch  
 
-Orchestrates multi-container setup (Flask + MySQL)
+---
 
-🧾 Jenkinsfile
+## 🙏 Credits  
 
-Contains pipeline-as-code configuration for Jenkins automation
+A special thanks to **[Prashant Gohel](https://github.com/prashantgohel-dev)** for his original project and detailed documentation — his AWS-based setup inspired me to replicate and deploy it on **Google Cloud** with my own CI/CD pipeline!  
 
-🚀 Deployment Details
+---
 
-Hosted on: Google Cloud Platform (GCP)
+## 📎 Repository  
 
-App URL: 🌐 http://34.93.214.230:5000
+🔗 **GitHub Repo:** [https://github.com/Chandanb2003/DevOps-Project-Two-Tier-Flask-App](https://github.com/Chandanb2003/DevOps-Project-Two-Tier-Flask-App)  
 
-Database: Persistent volume for MySQL data
+---
 
-Pipeline: Automatically redeploys on every push to main branch
+## 🧠 Learnings  
 
-🙏 Credits
-
-A special thanks to Prashant Gohel
- for his original project and detailed documentation — his AWS-based setup inspired me to replicate and deploy it on Google Cloud with my own CI/CD pipeline!
-
-📎 Repository
-
-🔗 GitHub Repo: https://github.com/Chandanb2003/DevOps-Project-Two-Tier-Flask-App
-
-🧠 Learnings
-
-Setting up Jenkins CI/CD for automated Docker builds and deployments
-
-Managing multi-container apps using Docker Compose
-
-Understanding infrastructure automation on cloud instances
-
-Integrating GitHub + Jenkins + Docker + GCP for a complete DevOps workflow
+- Setting up **Jenkins CI/CD** for automated Docker builds and deployments  
+- Managing **multi-container apps** using Docker Compose  
+- Understanding **infrastructure automation** on cloud instances  
+- Integrating **GitHub + Jenkins + Docker + GCP** for a complete DevOps workflow  
