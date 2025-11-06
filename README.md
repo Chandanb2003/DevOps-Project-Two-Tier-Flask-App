@@ -23,30 +23,15 @@ The CI/CD pipeline automatically **builds, tests, and deploys** the updated appl
 
 ## 🏗️ Architecture  
 
-+-----------------+ +----------------------+ +-----------------------------+
-| Developer |----->| GitHub Repo |----->| Jenkins Server |
-| (pushes code) | | (Source Code Mgmt) | | (on GCP VM) |
-+-----------------+ +----------------------+ | |
-| 1. Clones Repo |
-| 2. Builds Docker Image |
-| 3. Runs Docker Compose |
-+--------------+--------------+
-|
-| Deploys
-v
-+-----------------------------+
-| Application Server |
-| (Same GCP VM) |
-| |
-| +-------------------------+ |
-| | Docker Container: Flask | |
-| +-------------------------+ |
-| | |
-| v |
-| +-------------------------+ |
-| | Docker Container: MySQL | |
-| +-------------------------+ |
-+-----------------------------+
+Here’s a quick overview of how everything connects:  
+
+**Developer → GitHub → Jenkins → Docker → GCP VM**
+
+1. Developer pushes code to **GitHub**  
+2. **Jenkins** automatically pulls the latest code and builds Docker images  
+3. The application and database containers are deployed via **Docker Compose** on the **GCP VM**  
+
+This setup forms a clean **2-tier architecture** — Flask as the application layer and MySQL as the database layer.  
 
 ---
 
