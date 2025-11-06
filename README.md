@@ -7,7 +7,7 @@
 ![MySQL](https://img.shields.io/badge/Database-MySQL-orange?logo=mysql)
 ![Status](https://img.shields.io/badge/Status-Deployed-success?style=flat-square)
 
-**Author (Original Project):** [Prashant Gohel](https://github.com/prashantgohel-dev)  
+**Author (Original Project):** [Prashant Gohel](https://github.com/prashantgohel321)  
 **Deployed & Automated by:** **Chandan B**  
 **Date:** November 2025  
 
@@ -73,7 +73,7 @@ Contains pipeline-as-code configuration for Jenkins automation
 ## 🚀 Deployment Details  
 
 - **Hosted on:** Google Cloud Platform (GCP)  
-- **App URL:** 🌐 [http://34.93.214.230:5000](http://34.93.214.230:5000)  
+- **App URL:** 🌐 [http://34.93.214.230:5000](http://34.93.214.230:5000) Link is not available as the VM was destroyed after used 
 - **Database:** Persistent volume for MySQL data  
 - **Pipeline:** Automatically redeploys on every push to `main` branch  
 
@@ -81,7 +81,7 @@ Contains pipeline-as-code configuration for Jenkins automation
 
 ## 🙏 Credits  
 
-A special thanks to **[Prashant Gohel](https://github.com/prashantgohel-dev)** for his original project and detailed documentation — his AWS-based setup inspired me to replicate and deploy it on **Google Cloud** with my own CI/CD pipeline!  
+A special thanks to **[Prashant Gohel](https://github.com/prashantgohel321)** for his original project and detailed documentation — his AWS-based setup inspired me to replicate and deploy it on **Google Cloud** with my own CI/CD pipeline!  
 
 ---
 
