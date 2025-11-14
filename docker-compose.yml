@@ -1,44 +1,50 @@
 version: "3.8"
 
 services:
+
   mysql:
     container_name: mysql
-    image: mysql
+    image: mysql:8.0                       # Use explicit and stable version
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: "devops"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-devops}"
     ports:
       - "3306:3306"
-
     volumes:
       - mysql_data:/var/lib/mysql
-
     networks:
       - two-tier-nt
-
     restart: always
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot","-proot"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-root}"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 60s
+      start_period: 40s
+
+    # Production resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          memory: 256M
 
 
   flask-app:
     container_name: two-tier-app
     build:
       context: .
-
+      dockerfile: Dockerfile               # Explicit Dockerfile reference
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+      MYSQL_DB: "${MYSQL_DATABASE:-devops}"
+      FLASK_ENV: "production"
     ports:
       - "5000:5000"
-
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_DB=devops
-
     networks:
       - two-tier-nt
 
@@ -46,15 +52,29 @@ services:
       mysql:
         condition: service_healthy
 
+    restart: always
+
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 60s
+      start_period: 40s
+
+    # Production resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.70'
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
 volumes:
   mysql_data:
+    driver: local
 
 networks:
   two-tier-nt:
+    driver: bridge
